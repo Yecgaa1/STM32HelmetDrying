@@ -70,7 +70,7 @@ void init_weight(hx711_t *hx711) {
     set_gain(hx711, 64, 32);
 
     /* Set HX711 scaling factor (see README for procedure) */
-    set_scale(hx711, 1, 1);
+    set_scale(hx711, 96, 96);
 
     /* Tare weight */
     tare_all(hx711, 1);
@@ -83,8 +83,8 @@ void init_weight(hx711_t *hx711) {
  * @brief  Weight Measuring Function
  * @retval the weight measured for each associated channel
  */
-long middle(long a, long b, long c) {
-    printf("%d,%d,%d\r\n", a, b, c);
+float middle(float a, float b, float c) {
+    // printf("%d,%d,%d\r\n", a, b, c);
     if (a >= b) {
         if (b >= c) {
             return b;
@@ -105,17 +105,41 @@ long middle(long a, long b, long c) {
 }
 
 float measure_weight(hx711_t hx711, hx711_t hx711b) {
-    long weightA = 0;
+    float weightA = 0;
     long weightB = 0;
 
-    // Measure the weight for channel A
-    long a = get_weight(&hx711, 1, CHANNEL_A);
-    HAL_Delay(500);
-    long b = get_weight(&hx711, 1, CHANNEL_A);
-    HAL_Delay(500);
-    long c = get_weight(&hx711, 1, CHANNEL_A);
+    float a = 0, b = 0, c = 0;
+    const int max_attempts = 5; // Maximum attempts to avoid infinite loop
+
+    for (int attempt = 0; attempt < max_attempts; attempt++) {
+        // Get three weight readings with delays
+        a = get_weight(&hx711, 1, CHANNEL_A);
+        HAL_Delay(500);
+        b = get_weight(&hx711, 1, CHANNEL_A);
+        HAL_Delay(500);
+        c = get_weight(&hx711, 1, CHANNEL_A);
+
+        // Find max and min values
+        float max_val = a;
+        if (b > max_val) max_val = b;
+        if (c > max_val) max_val = c;
+
+        float min_val = a;
+        if (b < min_val) min_val = b;
+        if (c < min_val) min_val = c;
+
+        // Check if difference exceeds 20%
+        if (min_val != 0 && (max_val - min_val) > (min_val * 0.2)) {
+            // Values differ by more than 20%, try again
+            HAL_Delay(500); // Wait a bit longer before retry
+        } else {
+            break;
+        }
+    }
+
+    // If we've reached maximum attempts, return the median anyway
     weightA = middle(a, b, c);
-    // Weight cannot be negative
+
     weightA = (weightA < 0) ? 0 : weightA;
 
     // Measure the weight for channel B
@@ -169,7 +193,7 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        HAL_Delay(100);
+        HAL_Delay(1000);
         float t = measure_weight(test, test);
         if (t > -100) {
             printf("%.0f\r\n", t);
