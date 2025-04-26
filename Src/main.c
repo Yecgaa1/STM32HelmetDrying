@@ -57,97 +57,16 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void init_weight(hx711_t *hx711) {
-    char buffer[128] = {0};
-
-    sprintf(buffer, "HX711 initialization\n\r");
-    HAL_UART_Transmit(&huart1, (uint8_t *) (buffer), sizeof(buffer), 100);
-
-    /* Initialize the hx711 sensors */
-    hx711_init(hx711, GPIOA, GPIO_PIN_1, GPIOA, GPIO_PIN_0);
-
-    /* Configure gain for each channel (see datasheet for details) */
-    set_gain(hx711, 64, 32);
-
-    /* Set HX711 scaling factor (see README for procedure) */
-    set_scale(hx711, 96, 96);
-
-    /* Tare weight */
-    tare_all(hx711, 1);
-
-    sprintf(buffer, "HX711 module has been initialized\n\r");
-    HAL_UART_Transmit(&huart1, (uint8_t *) (buffer), sizeof(buffer), 100);
-}
-
-/**
- * @brief  Weight Measuring Function
- * @retval the weight measured for each associated channel
- */
-float middle(float a, float b, float c) {
-    // printf("%d,%d,%d\r\n", a, b, c);
-    if (a >= b) {
-        if (b >= c) {
-            return b;
-        } else if (a >= c) {
-            return c;
-        } else {
-            return a;
-        }
-    } else {
-        if (a >= c) {
-            return a;
-        } else if (b >= c) {
-            return c;
-        } else {
-            return b;
+hx711_t HX[6];
+float data[6];
+void Scan() {
+    float tmp;
+    for (int i = 0; i < 6; i++) {
+        if (measure_weight(HX[i],&tmp)) {
+            data[i] = tmp;
+            printf("HX711 %d: %.2f\r\n", i, data[i]);
         }
     }
-}
-
-float measure_weight(hx711_t hx711, hx711_t hx711b) {
-    float weightA = 0;
-    long weightB = 0;
-
-    float a = 0, b = 0, c = 0;
-    const int max_attempts = 5; // Maximum attempts to avoid infinite loop
-
-    for (int attempt = 0; attempt < max_attempts; attempt++) {
-        // Get three weight readings with delays
-        a = get_weight(&hx711, 1, CHANNEL_A);
-        HAL_Delay(500);
-        b = get_weight(&hx711, 1, CHANNEL_A);
-        HAL_Delay(500);
-        c = get_weight(&hx711, 1, CHANNEL_A);
-
-        // Find max and min values
-        float max_val = a;
-        if (b > max_val) max_val = b;
-        if (c > max_val) max_val = c;
-
-        float min_val = a;
-        if (b < min_val) min_val = b;
-        if (c < min_val) min_val = c;
-
-        // Check if difference exceeds 20%
-        if (min_val != 0 && (max_val - min_val) > (min_val * 0.2)) {
-            // Values differ by more than 20%, try again
-            HAL_Delay(500); // Wait a bit longer before retry
-        } else {
-            break;
-        }
-    }
-
-    // If we've reached maximum attempts, return the median anyway
-    weightA = middle(a, b, c);
-
-    weightA = (weightA < 0) ? 0 : weightA;
-
-    // Measure the weight for channel B
-    // weightB = get_weight(&hx711, 10, CHANNEL_B);
-    // // Weight cannot be negative
-    // weightB = (weightB < 0) ? 0 : weightB;
-
-    return weightA;
 }
 /* USER CODE END 0 */
 
@@ -180,8 +99,13 @@ int main(void) {
     MX_GPIO_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
-    hx711_t test;
-    init_weight(&test);
+
+    init_weight(&HX[0]);
+    init_weight(&HX[1]);
+    init_weight(&HX[2]);
+    init_weight(&HX[3]);
+    init_weight(&HX[4]);
+    init_weight(&HX[5]);
 
     /* USER CODE END 2 */
 
@@ -193,11 +117,9 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        HAL_Delay(1000);
-        float t = measure_weight(test, test);
-        if (t > -100) {
-            printf("%.0f\r\n", t);
-        }
+        HAL_Delay(100);
+        Scan();
+
     }
     /* USER CODE END 3 */
 }

@@ -17,20 +17,18 @@
 #define interrupts() __enable_irq()
 #define noInterrupts() __disable_irq()
 
-typedef struct
-{
-	GPIO_TypeDef  *clk_gpio;
-	GPIO_TypeDef  *dat_gpio;
-	uint16_t      clk_pin;
-	uint16_t      dat_pin;
-	long       	Aoffset;
-	float         Ascale;
-	uint8_t		Again;
-	long       	Boffset;
-	float         Bscale;
-	uint8_t		Bgain;
-
-}hx711_t;
+typedef struct {
+    GPIO_TypeDef *clk_gpio;
+    GPIO_TypeDef *dat_gpio;
+    uint16_t clk_pin;
+    uint16_t dat_pin;
+    long Aoffset;
+    float Ascale;
+    uint8_t Again;
+    long Boffset;
+    float Bscale;
+    uint8_t Bgain;
+} hx711_t;
 
 /* Setup functions */
 void hx711_init(hx711_t *hx711, GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_TypeDef *dat_gpio, uint16_t dat_pin);
@@ -51,5 +49,6 @@ long read(hx711_t *hx711, uint8_t channel);
 long read_average(hx711_t *hx711, int8_t times, uint8_t channel);
 double get_value(hx711_t *hx711, int8_t times, uint8_t channel);
 
-
+void init_weight(hx711_t *hx711);
+bool measure_weight(hx711_t hx711, float *weight);
 #endif /* APPLICATION_CORE_HX711_H_ */
