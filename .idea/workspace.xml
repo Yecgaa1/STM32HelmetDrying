@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="25" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
@@ -25,16 +25,77 @@
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug-MinGW" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad6bed98-b519-4ce2-92e0-d3e7780a05c7" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Src/TJCScreen.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Src/TJCScreen.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/system_stm32g4xx.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/Include/system_stm32g4xx.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32G4xx/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_cortex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_cortex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_exti.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_exti.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_flash_ramfunc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_rcc_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_bus.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_bus.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_cortex.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_cortex.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_crs.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_crs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dma.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dmamux.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_dmamux.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_exti.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_exti.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_gpio.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_gpio.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_lpuart.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_lpuart.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_pwr.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_pwr.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_rcc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_rcc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_system.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_system.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_usart.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_usart.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_ll_utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inc/hx711.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/hx711.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/stm32g4xx_hal_conf.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/stm32g4xx_hal_conf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inc/stm32g4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/stm32g4xx_it.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32HelmetDrying.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/STM32HelmetDrying.ioc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/hx711.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/hx711.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/stm32g4xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/stm32g4xx_hal_msp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/stm32g4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/stm32g4xx_it.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,10 +105,22 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Yecgaa1&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Yecgaa1/STM32HelmetDrying.git&quot;,
+    &quot;accountId&quot;: &quot;ec14fa87-c57a-45b3-9395-8ef45a8b86ef&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c" root0="FORCE_HIGHLIGHTING" />
@@ -85,27 +158,23 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/GitProject/STM32HelmetDrying/tmp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/GitProject/STM32HelmetDrying/Src&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GitProject\STM32HelmetDrying\Src" />
       <recent name="C:\GitProject\STM32HelmetDrying\tmp" />
       <recent name="C:\GitProject\STM32HelmetDrying" />
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.STM32HelmetDrying.elf">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="STM32HelmetDrying.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="STM32HelmetDrying" TARGET_NAME="STM32HelmetDrying.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="STM32HelmetDrying" RUN_TARGET_NAME="STM32HelmetDrying.elf">
+    <configuration name="STM32HelmetDrying.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="STM32HelmetDrying" TARGET_NAME="STM32HelmetDrying.elf" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="STM32HelmetDrying" RUN_TARGET_NAME="STM32HelmetDrying.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -136,6 +205,12 @@
       <workItem from="1742283271357" duration="2465000" />
       <workItem from="1742297354313" duration="5954000" />
       <workItem from="1745568466750" duration="7530000" />
+      <workItem from="1745678195996" duration="2101000" />
+      <workItem from="1745896195116" duration="6699000" />
+      <workItem from="1745979991826" duration="913000" />
+      <workItem from="1745993430037" duration="3945000" />
+      <workItem from="1746535950250" duration="1393000" />
+      <workItem from="1746588432151" duration="2000" />
     </task>
     <servers />
   </component>

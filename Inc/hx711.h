@@ -49,6 +49,6 @@ long read(hx711_t *hx711, uint8_t channel);
 long read_average(hx711_t *hx711, int8_t times, uint8_t channel);
 double get_value(hx711_t *hx711, int8_t times, uint8_t channel);
 
-void init_weight(hx711_t *hx711);
+void init_weight(hx711_t *hx711,GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_TypeDef *dat_gpio, uint16_t dat_pin);
 bool measure_weight(hx711_t hx711, float *weight);
 #endif /* APPLICATION_CORE_HX711_H_ */

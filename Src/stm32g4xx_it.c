@@ -22,11 +22,15 @@
 #include "stm32g4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+
+#include "stm32g4xx_hal_uart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+extern int recLen;
+extern char rec[100];
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -55,7 +59,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-
+extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -197,6 +201,42 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32g4xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief This function handles USART2 global interrupt / USART2 wake-up interrupt through EXTI line 26.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+  if(__HAL_UART_GET_IT_SOURCE(&huart2,UART_IT_IDLE)!=RESET){
+    __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+    HAL_UART_DMAStop(&huart2);
+    int recCNT=recLen-__HAL_DMA_GET_COUNTER(huart2.hdmarx);
+    char tmp[100]="";
+    strncpy(tmp,rec,recCNT);
+    if (recCNT==3) {
+      if (strncmp(rec,"hot",3)==0) {
+
+      }
+    }
+    else if (recCNT==4) {
+      if (strncmp(rec,"stop",4)==0) {
+
+      }
+    }else if (recCNT==5) {
+      if (strncmp(rec,"light",5)==0) {
+
+      }
+    }
+    memset(rec,0,recLen);
+    HAL_UART_Receive_DMA(&huart2,(uint8_t*)rec,recLen);
+  }
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
+}
 
 /* USER CODE BEGIN 1 */
 

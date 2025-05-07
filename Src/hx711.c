@@ -172,14 +172,14 @@ float get_weight(hx711_t *hx711, int8_t times, uint8_t channel) {
     return get_value(hx711, times, channel) / scale;
 }
 
-void init_weight(hx711_t *hx711) {
+void init_weight(hx711_t *hx711,GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_TypeDef *dat_gpio, uint16_t dat_pin) {
     char buffer[128] = {0};
 
     sprintf(buffer, "HX711 initialization\n\r");
     HAL_UART_Transmit(&huart1, (uint8_t *) (buffer), sizeof(buffer), 100);
 
     /* Initialize the hx711 sensors */
-    hx711_init(hx711, GPIOA, GPIO_PIN_1, GPIOA, GPIO_PIN_0);
+    hx711_init(hx711, clk_gpio, clk_pin, dat_gpio, dat_pin);
 
     /* Configure gain for each channel (see datasheet for details) */
     set_gain(hx711, 64, 32);
