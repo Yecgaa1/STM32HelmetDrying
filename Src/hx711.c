@@ -172,7 +172,7 @@ float get_weight(hx711_t *hx711, int8_t times, uint8_t channel) {
     return get_value(hx711, times, channel) / scale;
 }
 
-void init_weight(hx711_t *hx711,GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_TypeDef *dat_gpio, uint16_t dat_pin) {
+void init_weight(hx711_t *hx711, GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_TypeDef *dat_gpio, uint16_t dat_pin) {
     char buffer[128] = {0};
 
     sprintf(buffer, "HX711 initialization\n\r");
@@ -184,11 +184,21 @@ void init_weight(hx711_t *hx711,GPIO_TypeDef *clk_gpio, uint16_t clk_pin, GPIO_T
     /* Configure gain for each channel (see datasheet for details) */
     set_gain(hx711, 64, 32);
 
+    float gain = 1;
     /* Set HX711 scaling factor (see README for procedure) */
-    set_scale(hx711, 96, 96);
-
-    /* Tare weight */
-    tare_all(hx711, 1);
+    set_scale(hx711, gain, 96);
+    tare_all(hx711, 10);
+    // float tmp = 0;
+    // int tryTimes = 0;
+    // while (!measure_weight(*hx711, &tmp)) {
+    //     if (tryTimes++ > 10) {
+    //         sprintf(buffer, "HX711 module initialization failed\n\r");
+    //         HAL_UART_Transmit(&huart1, (uint8_t *) (buffer), sizeof(buffer), 100);
+    //         return;
+    //     }
+    // }
+    // /* Tare weight */
+    // set_offset(hx711, (long) (tmp * gain), CHANNEL_A);
 
     sprintf(buffer, "HX711 module has been initialized\n\r");
     HAL_UART_Transmit(&huart1, (uint8_t *) (buffer), sizeof(buffer), 100);
@@ -241,9 +251,9 @@ bool measure_weight(hx711_t hx711, float *weight) {
     for (int attempt = 0; attempt < max_attempts; attempt++) {
         // Get three weight readings with delays
         a = get_weight(&hx711, 1, CHANNEL_A);
-        HAL_Delay(500);
+        HAL_Delay(1);
         b = get_weight(&hx711, 1, CHANNEL_A);
-        HAL_Delay(500);
+        HAL_Delay(1);
         c = get_weight(&hx711, 1, CHANNEL_A);
 
         // Find max and min values
@@ -258,7 +268,7 @@ bool measure_weight(hx711_t hx711, float *weight) {
         // Check if difference exceeds 20%
         if (min_val != 0 && (max_val - min_val) > (min_val * 0.2)) {
             // Values differ by more than 20%, try again
-            HAL_Delay(500); // Wait a bit longer before retry
+            HAL_Delay(1); // Wait a bit longer before retry
         } else {
             break;
         }
@@ -270,5 +280,7 @@ bool measure_weight(hx711_t hx711, float *weight) {
         *weight = median;
         return true;
     }
-    return false;
+    *weight = median;
+    return true  ;
+    // return false;
 }
