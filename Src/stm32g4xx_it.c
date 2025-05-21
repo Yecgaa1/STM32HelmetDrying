@@ -25,6 +25,7 @@
 #include <string.h>
 
 #include "stm32g4xx_hal_uart.h"
+#include "Work.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -203,6 +204,20 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles EXTI line[9:5] interrupts.
+  */
+void EXTI9_5_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+
+  /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(DoorIN_Pin);
+  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+
+  /* USER CODE END EXTI9_5_IRQn 1 */
+}
+
+/**
   * @brief This function handles USART2 global interrupt / USART2 wake-up interrupt through EXTI line 26.
   */
 void USART2_IRQHandler(void)
@@ -216,16 +231,19 @@ void USART2_IRQHandler(void)
     strncpy(tmp,rec,recCNT);
     if (recCNT==3) {
       if (strncmp(rec,"hot",3)==0) {
-
+        //启动加热
+        Hot();
       }
     }
     else if (recCNT==4) {
       if (strncmp(rec,"stop",4)==0) {
-
+        //停止所有
+        Stop();
       }
     }else if (recCNT==5) {
       if (strncmp(rec,"light",5)==0) {
-
+        //启动紫外
+        Light();
       }
     }
     memset(rec,0,recLen);

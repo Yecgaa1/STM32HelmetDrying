@@ -57,8 +57,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define hot0_Pin GPIO_PIN_10
-#define hot0_GPIO_Port GPIOG
 #define Light1_Pin GPIO_PIN_0
 #define Light1_GPIO_Port GPIOC
 #define Light2_Pin GPIO_PIN_1
@@ -67,6 +65,18 @@ void Error_Handler(void);
 #define Light3_GPIO_Port GPIOC
 #define Light4_Pin GPIO_PIN_3
 #define Light4_GPIO_Port GPIOC
+#define IN1_Pin GPIO_PIN_4
+#define IN1_GPIO_Port GPIOA
+#define IN2_Pin GPIO_PIN_5
+#define IN2_GPIO_Port GPIOA
+#define IN3_Pin GPIO_PIN_6
+#define IN3_GPIO_Port GPIOA
+#define IN4_Pin GPIO_PIN_7
+#define IN4_GPIO_Port GPIOA
+#define IN5_Pin GPIO_PIN_4
+#define IN5_GPIO_Port GPIOC
+#define IN6_Pin GPIO_PIN_5
+#define IN6_GPIO_Port GPIOC
 #define Hot1_Pin GPIO_PIN_10
 #define Hot1_GPIO_Port GPIOB
 #define Hot2_Pin GPIO_PIN_11
@@ -83,12 +93,15 @@ void Error_Handler(void);
 #define Light5_GPIO_Port GPIOC
 #define Light6_Pin GPIO_PIN_7
 #define Light6_GPIO_Port GPIOC
-#define DoorInput_Pin GPIO_PIN_8
-#define DoorInput_GPIO_Port GPIOC
+#define DoorIN_Pin GPIO_PIN_8
+#define DoorIN_GPIO_Port GPIOC
+#define DoorIN_EXTI_IRQn EXTI9_5_IRQn
 #define Beep_Pin GPIO_PIN_9
 #define Beep_GPIO_Port GPIOC
 #define DoorLight_Pin GPIO_PIN_8
 #define DoorLight_GPIO_Port GPIOA
+#define Hot0_Pin GPIO_PIN_9
+#define Hot0_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
