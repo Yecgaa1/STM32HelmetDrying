@@ -13,6 +13,10 @@ extern volatile bool isExit[6], isWorking,isBeeping;
 void Hot() {
     if (HAL_GPIO_ReadPin(DoorIN_GPIO_Port,DoorIN_Pin) == GPIO_PIN_RESET) {
         TJCSendAny("noWork.en=1");
+        TJCSendAny("isHotting.val=0");
+        TJCSendAny("isLighting.val=0");
+        TJCSendAny("WorkingTIM.en=0");
+        TJCSendAny("WorkingLast.val=0");
         return;
     }
     Stop();
@@ -42,6 +46,11 @@ void Hot() {
 void Light() {
     if (HAL_GPIO_ReadPin(DoorIN_GPIO_Port,DoorIN_Pin) == GPIO_PIN_RESET) {
         TJCSendAny("noWork.en=1");
+        TJCSendAny("noWork.en=1");
+        TJCSendAny("isHotting.val=0");
+        TJCSendAny("isLighting.val=0");
+        TJCSendAny("WorkingTIM.en=0");
+        TJCSendAny("WorkingLast.val=0");
         return;
     }
     Stop();

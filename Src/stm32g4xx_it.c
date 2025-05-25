@@ -25,6 +25,7 @@
 #include <string.h>
 
 #include "stm32g4xx_hal_uart.h"
+#include "TJCScreen.h"
 #include "Work.h"
 /* USER CODE END Includes */
 
@@ -240,10 +241,34 @@ void USART2_IRQHandler(void)
         //停止所有
         Stop();
       }
+      else if (strncmp(rec,"hotC",4)==0) {
+        //继续加热前先校验
+        if (HAL_GPIO_ReadPin(DoorIN_GPIO_Port,DoorIN_Pin) == GPIO_PIN_RESET) {
+          TJCSendAny("noWork.en=1");
+          TJCSendAny("WorkingTIM.en=0");
+          TJCSendTxt("t5","继续");
+        }
+        else {
+          Hot();
+        }
+      }
     }else if (recCNT==5) {
       if (strncmp(rec,"light",5)==0) {
         //启动紫外
         Light();
+      }
+    }
+    else if (recCNT==6) {
+      if (strncmp(rec,"lightC",6)==0) {
+        //继续紫外前先校验
+        if (HAL_GPIO_ReadPin(DoorIN_GPIO_Port,DoorIN_Pin) == GPIO_PIN_RESET) {
+          TJCSendAny("noWork.en=1");
+          TJCSendAny("WorkingTIM.en=0");
+          TJCSendTxt("t5","继续");
+        }
+        else {
+          Light();
+        }
       }
     }
     memset(rec,0,recLen);

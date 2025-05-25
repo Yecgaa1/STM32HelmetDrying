@@ -11,6 +11,9 @@ UART_HandleTypeDef *TJCHuart;
 void TJCScreenInit(UART_HandleTypeDef *huart) {
     TJCHuart = huart;
     TJCSendEnd();
+    TJCSendAny("rest");
+    HAL_Delay(1000);
+    TJCSendEnd();
 }
 
 void TJCSendEnd() {

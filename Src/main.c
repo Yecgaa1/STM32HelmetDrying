@@ -70,45 +70,45 @@ int recLen = 100;
 char rec[100] = {0};
 volatile bool nowExit[6];
 volatile bool isExit[6] = {false};
-volatile bool isWorking = false;
+volatile bool isWorking = {false};
 static float YuZhi = 1000.0f;
 
 void Check() {
     if (HAL_GPIO_ReadPin(IN1_GPIO_Port, IN1_Pin) == GPIO_PIN_RESET) {
-        nowExit[0] = 0;
+        nowExit[0] = true;
     } else {
-        nowExit[0] = 1;
+        nowExit[0] = false;
     }
     if (HAL_GPIO_ReadPin(IN2_GPIO_Port, IN2_Pin) == GPIO_PIN_RESET) {
-        nowExit[1] = 0;
+        nowExit[1] = true;
     } else {
-        nowExit[1] = 1;
+        nowExit[1] = false;
     }
     if (HAL_GPIO_ReadPin(IN3_GPIO_Port, IN3_Pin) == GPIO_PIN_RESET) {
-        nowExit[2] = 0;
+        nowExit[2] = true;
     } else {
-        nowExit[2] = 1;
+        nowExit[2] = false;
     }
     if (HAL_GPIO_ReadPin(IN4_GPIO_Port, IN4_Pin) == GPIO_PIN_RESET) {
-        nowExit[3] = 0;
+        nowExit[3] = true;
     } else {
-        nowExit[3] = 1;
+        nowExit[3] = false;
     }
     if (HAL_GPIO_ReadPin(IN5_GPIO_Port, IN5_Pin) == GPIO_PIN_RESET) {
-        nowExit[4] = 0;
+        nowExit[4] = true;
     } else {
-        nowExit[4] = 1;
+        nowExit[4] = false;
     }
     if (HAL_GPIO_ReadPin(IN6_GPIO_Port, IN6_Pin) == GPIO_PIN_RESET) {
-        nowExit[5] = 0;
+        nowExit[5] = true;
     } else {
-        nowExit[5] = 1;
+        nowExit[5] = false;
     }
     for (int i = 0; i < 6; i++) {
         if (nowExit[i] != isExit[i]) {
             isExit[i] = nowExit[i];
             char tmp[10] = {0};
-            sprintf(tmp, "toukui%d", i - 1);
+            sprintf(tmp, "toukui%d", i + 1);
             if (isExit[i]) {
                 //如果有头盔
                 TJCSendAnyProperty(tmp, "bco", "63488");
@@ -153,8 +153,40 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-    __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);
-    HAL_UART_Receive_DMA(&huart1, (uint8_t *) rec, recLen);
+    __HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);
+    HAL_UART_Receive_DMA(&huart2, (uint8_t *) rec, recLen);
+
+  HAL_GPIO_WritePin(Hot0_GPIO_Port, Hot0_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Hot1_GPIO_Port, Hot1_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Hot2_GPIO_Port, Hot2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Hot3_GPIO_Port, Hot3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Hot4_GPIO_Port, Hot4_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Hot5_GPIO_Port, Hot5_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Hot6_GPIO_Port, Hot6_Pin, GPIO_PIN_SET);
+
+  HAL_GPIO_WritePin(Light1_GPIO_Port, Light1_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Light2_GPIO_Port, Light2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Light3_GPIO_Port, Light3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Light4_GPIO_Port, Light4_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Light5_GPIO_Port, Light5_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(Light6_GPIO_Port, Light6_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(DoorLight_GPIO_Port, DoorLight_Pin, GPIO_PIN_SET);
+  HAL_Delay(1000);
+  HAL_GPIO_WritePin(Hot0_GPIO_Port, Hot0_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Hot1_GPIO_Port, Hot1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Hot2_GPIO_Port, Hot2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Hot3_GPIO_Port, Hot3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Hot4_GPIO_Port, Hot4_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Hot5_GPIO_Port, Hot5_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Hot6_GPIO_Port, Hot6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(DoorLight_GPIO_Port, DoorLight_Pin, GPIO_PIN_RESET);
+
+  HAL_GPIO_WritePin(Light1_GPIO_Port, Light1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Light2_GPIO_Port, Light2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Light3_GPIO_Port, Light3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Light4_GPIO_Port, Light4_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Light5_GPIO_Port, Light5_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(Light6_GPIO_Port, Light6_Pin, GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -385,7 +417,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : DoorIN_Pin */
   GPIO_InitStruct.Pin = DoorIN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(DoorIN_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : DoorLight_Pin */
