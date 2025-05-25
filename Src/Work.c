@@ -9,7 +9,7 @@
 #include "main.h"
 #include "stm32g4xx_hal_gpio.h"
 #include "TJCScreen.h"
-extern volatile bool isExit[6], isWorking,isBeeping;
+extern volatile bool nowExit[6], isWorking,isBeeping;
 void Hot() {
     if (HAL_GPIO_ReadPin(DoorIN_GPIO_Port,DoorIN_Pin) == GPIO_PIN_RESET) {
         TJCSendAny("noWork.en=1");
@@ -21,22 +21,22 @@ void Hot() {
     }
     Stop();
     isWorking = true;
-    if (isExit[0]) {
+    if (nowExit[0]) {
         HAL_GPIO_WritePin(Hot1_GPIO_Port, Hot1_Pin, GPIO_PIN_SET);
     }
-    if (isExit[1]) {
+    if (nowExit[1]) {
         HAL_GPIO_WritePin(Hot2_GPIO_Port, Hot2_Pin, GPIO_PIN_SET);
     }
-    if (isExit[2]) {
+    if (nowExit[2]) {
         HAL_GPIO_WritePin(Hot3_GPIO_Port, Hot3_Pin, GPIO_PIN_SET);
     }
-    if (isExit[3]) {
+    if (nowExit[3]) {
         HAL_GPIO_WritePin(Hot4_GPIO_Port, Hot4_Pin, GPIO_PIN_SET);
     }
-    if (isExit[4]) {
+    if (nowExit[4]) {
         HAL_GPIO_WritePin(Hot5_GPIO_Port, Hot5_Pin, GPIO_PIN_SET);
     }
-    if (isExit[5]) {
+    if (nowExit[5]) {
         HAL_GPIO_WritePin(Hot6_GPIO_Port, Hot6_Pin, GPIO_PIN_SET);
     }
 
@@ -55,22 +55,22 @@ void Light() {
     }
     Stop();
     isWorking = true;
-    if (isExit[0]) {
+    if (nowExit[0]) {
         HAL_GPIO_WritePin(Light1_GPIO_Port, Light1_Pin, GPIO_PIN_SET);
     }
-    if (isExit[1]) {
+    if (nowExit[1]) {
         HAL_GPIO_WritePin(Light2_GPIO_Port, Light2_Pin, GPIO_PIN_SET);
     }
-    if (isExit[2]) {
+    if (nowExit[2]) {
         HAL_GPIO_WritePin(Light3_GPIO_Port, Light3_Pin, GPIO_PIN_SET);
     }
-    if (isExit[3]) {
+    if (nowExit[3]) {
         HAL_GPIO_WritePin(Light4_GPIO_Port, Light4_Pin, GPIO_PIN_SET);
     }
-    if (isExit[4]) {
+    if (nowExit[4]) {
         HAL_GPIO_WritePin(Light5_GPIO_Port, Light5_Pin, GPIO_PIN_SET);
     }
-    if (isExit[5]) {
+    if (nowExit[5]) {
         HAL_GPIO_WritePin(Light6_GPIO_Port, Light6_Pin, GPIO_PIN_SET);
     }
 }
